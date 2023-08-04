@@ -33,5 +33,3 @@ models:
         description: name of the event.
         tests:
           - not_null
-
-
