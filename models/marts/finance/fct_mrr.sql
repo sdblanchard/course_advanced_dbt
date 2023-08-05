@@ -20,16 +20,6 @@ monthly_subscriptions AS (
         billing_period = 'monthly'
 ),
 
--- Use the dates spine to generate a list of months
-months AS (
-    SELECT
-        calendar_date AS date_month
-    FROM
-        {{ ref('dim_dates') }}
-    WHERE
-        day_of_month = 1
-),
-
 -- Logic CTEs
 -- Create subscription period start_month and end_month ranges
 subscription_periods AS (
@@ -68,17 +58,7 @@ subscribers AS (
 
 -- Create one record per month between a subscriber's first and last month
 subscriber_months AS (
-    SELECT
-        subscribers.user_id,
-        subscribers.subscription_id,
-        months.date_month
-    FROM
-        subscribers
-        INNER JOIN months
-            -- All months after start date
-            ON months.date_month >= subscribers.first_start_month
-                -- and before end date
-                AND months.date_month < subscribers.last_end_month
+    {{ subscriber_months('user_id', 'subscription_id', 'subscribers', 'first_start_month', 'last_end_month') }}
 ),
 
 -- Join together to create base CTE for MRR calculations

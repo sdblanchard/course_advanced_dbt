@@ -1,0 +1,5 @@
+version: 2
+
+macros:
+  - name: subscriber_months
+    description: A macro to create one record per month between a subscriber's first and last month

@@ -5,3 +5,4 @@ sources:
     tables:
       - name: daily_ads
         identifier: ads
+        description: Results for ads associated with a campaign.
