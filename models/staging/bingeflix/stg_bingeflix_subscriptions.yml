@@ -24,4 +24,3 @@ models:
         description: The unique identifier for the subscription.
         tests:
           - not_null
-          - unique

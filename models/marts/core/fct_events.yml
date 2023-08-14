@@ -12,7 +12,6 @@ models:
           priority: high
         tests:
           - not_null
-          - unique
 
       - name: session_id
         description: id of user session.

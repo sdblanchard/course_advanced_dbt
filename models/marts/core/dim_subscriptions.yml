@@ -6,14 +6,11 @@ models:
         description: The unique identifier of the subscription.
         tests:
           - not_null
-          - unique
 
       - name: subscription_plan_id
         description: The subscription plan identifier.
         tests:
           - not_null
-          - accepted_values:
-              values: [1, 2, 3]
 
       - name: user_id
         description: The identifier of the user.
